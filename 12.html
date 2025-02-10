@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Footprint Calculator</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: aqua;
+        }
+        .container {
+            font-family: "Inter", sans-serif;
+            color: black;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="radio"] {
+            display: none;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+        label {
+            display: flex;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        label span {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: .25s ease;
+            font-size: 1em;
+            line-height: 1.5em;
+            width: 250px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            background-color: aqua;
+            margin: 5px 0;
+        }
+        label span:hover {
+            background-color: azure;
+        }
+        label span::before {
+            content: "";
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 18px;
+            transition: .25s ease;
+            box-shadow: inset 0 0 0 2px #00005c;
+        }
+        input[type="radio"]:checked + span::before {
+            box-shadow: inset 0 0 0 10px #00005c;
+        }
+        .button-container {
+            display: flex;
+            align-items: center;
+            margin-top: 1em;
+        }
+        .pill {
+            font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0.5em 2em;
+            border-radius: 3em;
+            border: 3px solid black;
+            background-color: rgb(83, 197, 214);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: black;
+            margin-left: 1em;
+        }
+        .pill:hover {
+            background: aqua;
+            color: white;
+        }
+        .circle-button {
+            background-color: rgb(59, 182, 239);
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .circle-button:hover {
+            background: rgb(39, 142, 189);
+        }
+        @media (max-width: 600px) {
+            .pill {
+                font-size: 16px;
+            }
+            label span {
+                width: 180px;
+                font-size: 18px;
+            }
+            .button-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .pill {
+                margin-left: 0;
+                margin-top: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>How do you wash your vehicle?</h2>
+        <form>
+            <label>
+                <input type="radio" id="I use a garden hose" name="washing" value="5">
+                <span>I use a garden hose</span>
+            </label>
+            <label>
+                <input type="radio" id="I use a bucket & duster" name="washing" value="120">
+                <span>I use a bucket & duster</span>
+            </label>
+        </form>
+        <div class="button-container">
+            <button type="button" class="circle-button" onclick="window.location.href='11.html'">&#8249;&#8249;</button>
+            <a href="#" class="pill" onclick="calculatewashing()">Next</a>
+        </div>
+        <p id="result"></p>
+    </div>
+    <script>
+        function calculatewashing() {
+            var selectedOption = document.querySelector('input[name="washing"]:checked');
+            if (!selectedOption) {
+                alert("Please select an option.");
+                return;
+            }
+    
+            var additionalWater = parseFloat(selectedOption.value);
+            var urlParams = new URLSearchParams(window.location.search);
+            var totalWaterUsage = parseFloat(urlParams.get('totalWaterUsage'));
+    
+            if (isNaN(totalWaterUsage)) {
+                alert("Error: Previous result from page 11 not found.");
+                return;
+            }
+    
+            var totalWater = totalWaterUsage + additionalWater;
+    
+            document.getElementById('result').textContent = "Total Water Saved: " + totalWater + " L";
+            // Redirect to next page or perform other actions
+            // You can adjust the URL based on your page structure
+            window.location.href = '13.html?totalWaterUsage=' + totalWater;
+        }
+    </script>
+    
+    
+</body>
+</html>

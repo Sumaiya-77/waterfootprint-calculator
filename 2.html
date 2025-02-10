@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.class">
+    <title>Water Footprint Calculator</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: aqua;
+            font-size: 20px;
+            font-family: "Inter", sans-serif;
+        }
+        .container {
+            font-family: "Inter", sans-serif;
+            color: black;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="radio"] {
+            display: none;
+        }
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+        label {
+            display: flex;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        label span {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: .25s ease;
+            font-size: 1em;
+            line-height: 1.5em;
+            width: 250px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            background-color: aqua;
+            margin: 5px 0;
+        }
+        label span:hover {
+            background-color: azure;
+        }
+        label span::before {
+            content: "";
+            background-color: #fff;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 15px;
+            transition: .25s ease;
+            box-shadow: inset 0 0 0 2px #00005c;
+        }
+        input[type="radio"]:checked + span::before {
+            box-shadow: inset 0 0 0 10px #00005c;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .pill {
+            font-size: 1em;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0.5em 2em;
+            margin: 0.25em;
+            border-radius: 3em;
+            border: 3px solid black;
+            height: 50px;
+            outline: black;
+            background-color: rgb(83, 197, 214);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: black;
+        }
+        .pill:hover {
+            background: rgb(170, 238, 219);
+            color: white;
+        }
+        .circle-button {
+            background-color: rgb(59, 182, 239);
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+        .circle-button:hover {
+            background: rgb(39, 142, 189);
+        }
+        @media (max-width: 600px) {
+            .pill {
+                padding: 0.5em 1em;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            label span {
+                width: 180px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="h2">How long is the average shower in your household?</h2>
+        <form action="">
+            <label>
+                <input type="radio" id="Less than 5 min" name="showerDuration" value="12">
+                <span>Less than 5 min</span>
+            </label>
+            <label>
+                <input type="radio" id="5 to 10 min" name="showerDuration" value="8">
+                <span>5 to 10 min</span>
+            </label>
+            <label>
+                <input type="radio" id="11 to 15 min" name="showerDuration" value="5">
+                <span>11 to 15 min</span>
+            </label>
+            <label>
+                <input type="radio" id="More than 15 min" name="showerDuration" value="0">
+                <span>More than 15 min</span>
+            </label>
+        </form>
+        <div class="buttons">
+            <a href="1.html" class="circle-button">&#8249;&#8249;</a>
+            <button class="pill" type="button" onclick="calculateWaterFootprint()">Next</button>
+        </div>
+        <p id="result"></p>
+    </div>
+    <script>
+        function calculateWaterFootprint() {
+            var selectedOption = document.querySelector('input[name="showerDuration"]:checked');
+            if (!selectedOption) {
+                alert("Please select an option.");
+                return;
+            }
+
+            var urlParams = new URLSearchParams(window.location.search);
+            var numberOfPeople = parseInt(urlParams.get('people'));
+
+            var waterConsumedPerPerson = parseInt(selectedOption.value);
+            var totalWaterConsumption = numberOfPeople * waterConsumedPerPerson;
+
+            document.getElementById('result').textContent = "Total Water Consumed: " + totalWaterConsumption + " L";
+
+            // Redirect to the next page with the calculated total water consumption
+            var nextPageUrl = `3.html?people=${numberOfPeople}&totalShowerWaterConsumption=${totalWaterConsumption}`;
+            window.location.href = nextPageUrl;
+        }
+    </script>
+</body>
+</html>

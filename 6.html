@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Footprint Calculator</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: aqua;
+        }
+        .container {
+            font-family: "Inter", sans-serif;
+            color: black;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="radio"] {
+            display: none;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+        label {
+            display: flex;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        label span {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: .25s ease;
+            font-size: 1em;
+            line-height: 1.5em;
+            width: 250px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            background-color: aqua;
+            margin: 5px 0;
+        }
+        label span:hover {
+            background-color: azure;
+        }
+        label span::before {
+            content: "";
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 18px;
+            transition: .25s ease;
+            box-shadow: inset 0 0 0 2px #00005c;
+        }
+        input[type="radio"]:checked + span::before {
+            box-shadow: inset 0 0 0 10px #00005c;
+        }
+        .button-container {
+            display: flex;
+            align-items: center;
+            margin-top: 1em;
+        }
+        .pill {
+            font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0.5em 2em;
+            border-radius: 3em;
+            border: 3px solid black;
+            background-color: rgb(83, 197, 214);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: black;
+            margin-left: 1em;
+        }
+        .pill:hover {
+            background: aqua;
+            color: white;
+        }
+        .circle-button {
+            background-color: rgb(59, 182, 239);
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .circle-button:hover {
+            background: rgb(39, 142, 189);
+        }
+        @media (max-width: 600px) {
+            .pill {
+                font-size: 16px;
+            }
+            label span {
+                width: 180px;
+                font-size: 18px;
+            }
+            .button-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .pill {
+                margin-left: 0;
+                margin-top: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-text">
+        <h2>How long does your bathroom faucet run as you wash/brush/shave….Per day...</h2>
+        <div class="container">
+            <form>
+                <label>
+                    <input type="radio" id="5 to 10 min" name="runningwater" value="30">
+                    <span>5 to 10 min</span>
+                </label>
+                <label>
+                    <input type="radio" id="11 to 15 min" name="runningwater" value="15">
+                    <span>11 to 15 min</span>
+                </label>
+                <label>
+                    <input type="radio" id="16 to 20 min" name="runningwater" value="7.5">
+                    <span>16 to 20 min</span>
+                </label>
+                <label>
+                    <input type="radio" id="more than 30min" name="runningwater" value="0">
+                    <span>more than 30min</span>
+                </label>
+            </form>
+            <div class="button-container">
+                <button type="button" class="circle-button" onclick="window.location.href='5.html'">&#8249;&#8249;</button>
+                <button class="pill" type="button" onclick="calculateRunningWater()">Next</button>
+            </div>
+            <p id="result"></p> <!-- This will display the result -->
+        </div>
+        <script>
+            function calculateRunningWater() {
+                var selectedOption = document.querySelector('input[name="runningwater"]:checked');
+                if (!selectedOption) {
+                    alert("Please select an option.");
+                    return;
+                }
+
+                var additionalWater = parseFloat(selectedOption.value);
+                var urlParams = new URLSearchParams(window.location.search);
+                var totalWaterUsage = parseFloat(urlParams.get('totalBucketUsage'));
+
+                if (isNaN(totalWaterUsage)) {
+                    alert("Error: Previous result from page 5 not found.");
+                    return;
+                }
+
+                var totalWater;
+
+                if (additionalWater > 0) {
+                    totalWater = totalWaterUsage + (additionalWater ); 
+                } else {
+                    totalWater = totalWaterUsage; // Display previous result if No is selected
+                }
+
+                document.getElementById('result').textContent = "Total Water Consumed: " + totalWater + " L";
+
+                // Redirect to page 7 with the calculated total water consumption
+                var nextPageUrl = `7.html?totalWaterUsage=${totalWater}`;
+                window.location.href = nextPageUrl;
+            }
+        </script>
+    </body>
+</html>

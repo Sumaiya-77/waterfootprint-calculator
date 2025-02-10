@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Footprint Calculator</title>
+    <style>
+        body, html {
+            height: 60%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: aqua;
+            font-size: 20px;
+        }
+
+        .pill {
+            position: fixed; /* Fixed positioning */
+            top: 150%; /* Position from the top */
+            left: 50%; /* Position from the left */
+            transform: translate(-50%, -50%); /* Center the button */
+            font-size: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0.5em 10em;
+            padding-right: -10%;
+            margin: 0.35em;
+            border-radius: 4em;
+            border: px solid  rgb(83, 197, 214);
+            outline:  rgb(83, 197, 214);
+            background-color: rgb(83, 197, 214);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pill:hover {
+            background: none;
+            color: white;
+        }
+
+        .container {
+            color: rgb(16, 15, 19);
+            position: absolute;
+            transform: translate(4%, 95%);
+            text-align: center;
+        }
+
+        .container label {
+            font-size: 15px;
+            color: rgb(16, 5, 6);
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .container input {
+            width: 100%;
+            text-align: center;
+            font-size: 25px;
+            margin: 1em 12px;
+            padding: 10px;
+            border: black;
+            outline: pink;
+        }
+
+        .container input:hover {
+            background-color: yellow;
+            color: rgb(15, 1, 27);
+        }
+
+        button {
+            background-color: rgb(59, 182, 239);
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
+
+        .circle-button {
+            position: relative;
+            top: 75%;
+            right:60%;
+            font-size: 10px;
+            margin: 0.25em;
+            border-radius: 50px;
+            color: aliceblue;
+            padding: 0.5em 1em;
+        }
+
+        @media (max-width: 600px) {
+            .circle-button {
+                top:78%;
+                right:62%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>How many people are in your household?</h1>
+    <div class="container">
+        <label for="numberOfPeople"></label>
+        <input type="number" id="numberOfPeople" value="1" min="1">
+        <button class="pill" type="button" onclick="redirectToNextPage()"><h1>Next</h1></button>
+    </div>
+    <div class="circle-button">
+        <button class="circle-button" type="button">&#8249;&#8249;</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="jquery.nice-number.js"></script>
+    <script>
+        $(function() {
+            $('input[type="number"]').niceNumber();
+        });
+        function redirectToNextPage() {
+            var numberOfPeople = document.getElementById('numberOfPeople').value;
+            if (numberOfPeople < 1) {
+                alert("Please enter a valid number of people.");
+                return;
+            }
+            window.location.href = "2.html?people=" + numberOfPeople;
+        }
+    </script>
+</body>
+</html>

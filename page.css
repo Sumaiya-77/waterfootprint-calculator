@@ -1,0 +1,248 @@
+*{
+    margin:0;
+    padding: 0px;
+    border-radius: 0;
+}
+header {
+    background-image: linear-gradient(rgb(0,0,0,.5),rgb(0,0,0,.5),rgb(0,0,0,.5)), url('main.jpg');
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    min-height: 100px;
+    padding: 8px;
+    font-weight: 600;
+}
+
+ul {
+    float: right;
+    list-style-type: none;
+    margin-top: 30px;
+    min-height: 400px;
+    margin: right 40px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+ul li {
+    display: inline-block;
+}
+
+ul li a {
+    text-decoration: none;
+    color: aliceblue;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: .5s ease;
+}
+
+ul li a:hover {
+    background-color: aliceblue;
+    color: black;
+}
+
+ul li .active a {
+    background-color: #fff;
+    color: black;
+}
+
+.logo img {
+    float: left;
+    width: 220px;
+    height: 140px;
+}
+
+.main {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.title {
+    position: absolute;
+    top: 46%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.title h1 {
+    color: #fff;
+    font-size: 70px;
+}
+
+.button {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn1 {
+    border: 1.4px solid white;
+    padding: 5px 20px;
+    color: white;
+    transition: 0.5s ease;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.btn1:hover {
+    background-color: antiquewhite;
+    color: #000;
+}
+
+.content-1 {
+    margin-top: 90px;
+    padding-right: 120px;
+    width: 650px;
+    height: 200px;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-align: center;
+    font-weight: bold;
+    color: navy;
+    float: right;
+    right: 40%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.image {
+    padding-top: 50px;
+    padding-left: 100px;
+}
+
+.btn {
+    padding: .6rem 1rem;
+    background: #006669;
+    color: white;
+    border: transparent;
+    border-radius: .25rem;
+}
+
+.big-btn {
+    padding: .9rem 1.5rem;
+    line-height: 2.3rem;
+}
+
+.btn:hover {
+    color: white !important;
+    background: #005255;
+}
+.footer {
+    background: #303033;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+    max-height: 450px;
+}
+
+.footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.footer .footer-content .footer-section {
+    flex: 1;
+    margin-bottom: 30px;
+}
+
+.footer .footer-content h1,
+.footer .footer-content h2 {
+    color: white;
+}
+
+.footer .footer-content .about h1 span {
+    color: aqua;
+}
+
+.footer .footer-content .about .contact span {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+.footer .footer-content .about .socials a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1.3em;
+    background: #555;
+    color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.footer .footer-content .about .socials a:hover {
+    background-color: #777;
+}
+
+.footer .footer-content .links {
+    text-align: center;
+}
+
+.footer .footer-content .links ul {
+    padding: 0;
+    margin-right: 170px;
+}
+
+.footer .footer-content .links ul a {
+    display: flex;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.footer .footer-content .links ul a:hover {
+    color: aqua;
+}
+
+.footer .footer-content .contact-form .contact-input {
+    width: calc(80% - 10px);
+    padding: 10px;
+    margin-bottom: 15px;
+    background: #272727;
+    color: #bedbdb;
+    border: none;
+    border-radius: 5px;
+}
+
+.footer .footer-content .contact-form .contact-input:focus {
+    background: #1a1a1a;
+}
+
+.footer .footer-content .contact-form .contact-input.email {
+    width: calc(50px + 60px);
+}
+
+.footer .footer-content .contact-form .contact-input.message {
+    width: calc(100% - 20px);
+    min-height: 100px;
+}
+
+.footer .footer-content .contact-form .contact-btn {
+    padding: 10px 20px;
+    background: #006669;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer .footer-content .contact-form .contact-btn:hover {
+    background-color: #005255;
+}
+.footer-bottom{
+        background:transparent;
+        width: 100%;
+        color: #fff;
+        height: 50px;
+        text-align: center;
+        position:absolute;
+        bottom: -305%;
+        left:0px;
+    }
+    
