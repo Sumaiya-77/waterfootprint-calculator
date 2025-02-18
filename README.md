@@ -27,7 +27,7 @@ Clone the repository:
 bash
 Copy
 Edit
-git clone https://github.com/yourusername/water-footprint-calculator.git
+git clone https://github.com/sumaiya/water-footprint-calculator.git
 Install the required dependencies: If you’re using XAMPP, make sure it's running on your machine.
 
 Set up the database:
